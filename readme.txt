@@ -20,7 +20,6 @@ It is recommended to use child theme to make changes and prevent overwriting fut
 
 = 0.0.1 =
 * Security bug addressed
-* Changed thumbnail size
 
 == Upgrade Notice ==
 
