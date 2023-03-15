@@ -60,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php
 		// Author bio.
-		if ( is_single() && get_the_author_meta( 'description' ) ) :
+		if ( is_singular('post') && get_the_author_meta( 'description' ) ) :
 			get_template_part( 'template-parts/article/entry-author' );
 		endif;
 		?>

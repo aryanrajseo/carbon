@@ -31,8 +31,8 @@ do_action( 'carbon_before_content' );
 
 			get_template_part( 'template-parts/content', get_post_format() );
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
+			// If is the single post and comments are open or we have at least one comment, load up the comment template.
+			if ( is_singular('post') && comments_open() || get_comments_number() ) :
 				comments_template();
 			endif;
 
