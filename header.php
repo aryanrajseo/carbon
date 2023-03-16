@@ -55,10 +55,13 @@ do_action( 'carbon_before' );
 
 		<?php
 
-		// show only if it is not default post page and template-parts/article/entry-header is inactive.
-		if ( ! is_front_page() || ! is_home() ) {
-			//get_template_part( 'template-parts/page-header' );
+		// show only if it is not default post page and template-parts/article/entry-header is inactive. Woo single product is restricted.
+		if ( ! is_front_page() ||! is_home() ) {
+            if ( ! is_product() ) {
+	            // get_template_part( 'template-parts/page-header' );
+            }
 		}
+
 		?>
 		<?php
 		/**

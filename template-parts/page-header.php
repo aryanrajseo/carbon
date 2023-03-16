@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php elseif ( is_front_page() && ! is_home() ) : ?>
             <h2 class="page-title"><?php single_post_title(); ?></h2>
 
-		<?php elseif ( is_singular() ) : ?>
+		<?php elseif ( is_singular() || is_product_category() || is_product_tag() ) : ?>
 			<?php
 			$title = get_the_title();
 			printf( '<h1 class="page-title">%s</h1>', $title );
@@ -75,6 +75,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php } else { ?>
                 <h1 class="page-title"><?php _e( 'Nothing Found', 'carbon' ); ?></h1>
 			<?php } endif; ?>
+
+
 
     </div>
 </section><!-- .page-header -->

@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="inside-article">
 
 		<?php
-		// hide for single post/page to show template-parts/page-header.php
+		// hide on single post/page to show template-parts/page-header.php
 		//if ( ! is_singular() ) :
 		get_template_part( 'template-parts/article/entry-header' );
 		//endif;
