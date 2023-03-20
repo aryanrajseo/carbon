@@ -21,8 +21,8 @@ get_header(); ?>
 do_action( 'carbon_before_content' );
 ?>
 
-
-    <main class="site-content content" id="content" role="main">
+    <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
 
 		<?php
 		// Start the Loop.
@@ -41,7 +41,8 @@ do_action( 'carbon_before_content' );
 		endwhile; // End the loop.
 		?>
 
-    </main><!-- #main content -->
+    </main><!-- #main -->
+    </div><!-- .content-area -->
 
 <?php
 /**

@@ -74,7 +74,7 @@ do_action( 'carbon_before' );
 			// fires before content-area
 			do_action( 'carbon_before_content-area' );
 			?>
-            <div id="content-area" class="content-area">
+            <div id="content" class="site-content">
 
 
     

@@ -120,6 +120,8 @@ function carbon_setup() {
 	// Add support for responsive embeds.
 	add_theme_support( 'responsive-embeds' );
 
+    // Add support for WooCommerce Plugin.
+	add_theme_support( 'woocommerce' );
 
 }
 

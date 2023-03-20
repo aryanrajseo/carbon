@@ -16,7 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-</div><!-- #content-area -->
+
+</div><!-- #content -->
 <?php
 // fires after content-area
 do_action( 'carbon_after_content-area' );
@@ -25,9 +26,7 @@ do_action( 'carbon_after_content-area' );
 <?php
 get_sidebar();
 ?>
-<?php
-//get_sidebar( 'sidebar-2' );
-?>
+
 </div><!-- #content-layout-wrap -->
 <?php
 /**
@@ -35,6 +34,7 @@ get_sidebar();
  */
 do_action( 'carbon_after_content_layout_wrap' );
 ?>
+
 </div><!-- #site-inner -->
 <?php
 if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) ) {
