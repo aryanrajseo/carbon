@@ -28,6 +28,7 @@ get_sidebar();
 ?>
 
 </div><!-- #content-layout-wrap -->
+
 <?php
 /**
  * Fires before the footer, after the content layout wrap.
