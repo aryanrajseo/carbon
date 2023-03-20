@@ -201,30 +201,6 @@ function carbon_block_editor_styles() {
 add_action( 'enqueue_block_editor_assets', 'carbon_block_editor_styles' );
 
 
-add_action( 'after_setup_theme', 'carbon_setup_woocommerce' );
-/**
- * Set up WooCommerce
- *
- * @since 0.0.2
- */
-function carbon_setup_woocommerce() {
-	if ( ! class_exists( 'WooCommerce' ) ) {
-		return;
-	}
-
-	// Add support for WC features.
-	add_theme_support( 'wc-product-gallery-zoom' );
-	add_theme_support( 'wc-product-gallery-lightbox' );
-	add_theme_support( 'wc-product-gallery-slider' );
-
-	// Remove default WooCommerce wrappers.
-	//remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
-	//remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-	remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
-	//add_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 50 );
-}
-
-
 /**
  * Custom template tags for this theme.
  */
@@ -238,6 +214,8 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
 require get_parent_theme_file_path( '/inc/general.php' );
 // Sidebar or Widgets Functions
 require get_parent_theme_file_path( '/inc/widgets.php' );
+// Sidebar or Widgets Functions
+require get_parent_theme_file_path( '/inc/woocommerce.php' );
 
 // Add support for excerpt in Page
 add_post_type_support( 'page', 'excerpt' );
