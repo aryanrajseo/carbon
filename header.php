@@ -18,6 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
+	<?php
+	/**
+	 * Fires under <head>.
+	 */
+	do_action( 'carbon_head' );
+	?>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php wp_head(); ?>
@@ -31,7 +37,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Fires immediately after the body element opening markup.
  */
 do_action( 'carbon_before' );
-
 ?>
 
 <div id="site-container" class="site-container">
@@ -71,8 +76,10 @@ do_action( 'carbon_before' );
 		?>
         <div id="content-layout-wrap" class="content-layout-wrap">
 			<?php
-			// fires before content-area
-			do_action( 'carbon_before_content-area' );
+			/**
+			 * Fires before #content.
+			 */
+			do_action( 'carbon_before_content' );
 			?>
             <div id="content" class="site-content">
 
