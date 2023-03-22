@@ -14,7 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div class="title-area">
+    <div class="site-logo">
 	<?php the_custom_logo(); ?>
+    </div>
+    <div class="site-branding">
 	<?php if ( is_front_page() ) : ?>
         <h1 class="site-title">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
@@ -30,5 +33,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
         <p class="site-description"><?php echo $description; ?></p>
 	<?php endif; ?>
+    </div>
 </div><!-- .title-area -->
 
