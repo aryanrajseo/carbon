@@ -16,6 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header(); ?>
 
 <div id="primary" class="content-area">
+	<?php
+	/**
+	 * Fires before #main.
+	 */
+	do_action( 'carbon_before_main' );
+	?>
     <main id="main" class="site-main" role="main">
 
 	<?php if ( have_posts() ) : ?>
@@ -55,6 +61,12 @@ get_header(); ?>
 	?>
 
     </main><!-- #main -->
+	<?php
+	/**
+	 * Fires after #main.
+	 */
+	do_action( 'carbon_after_main' );
+	?>
 </div><!-- .content-area -->
 
 <?php get_footer(); ?>

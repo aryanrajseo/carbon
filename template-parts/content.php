@@ -15,6 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
+<?php
+/**
+ * Fires before #article.
+ */
+do_action( 'carbon_before_article' );
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <div class="inside-article">
@@ -67,3 +73,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     </div><!-- .inside article -->
 </article><!-- article#post-<?php the_ID(); ?> -->
+
+<?php
+/**
+ * Fires after #article.
+ */
+do_action( 'carbon_after_article' );
+?>

@@ -15,13 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
-<?php
-/**
- * Fires before the content, after the content layout wrap opening markup.
- */
-do_action( 'carbon_before_content' );
-?>
-    <div id="primary" class="content-area">
+<div id="primary" class="content-area">
+	    <?php
+	    /**
+	     * Fires before #main.
+	     */
+	    do_action( 'carbon_before_main' );
+	    ?>
     <main id="main" class="site-main" role="main">
 
         <header class="page-header">
@@ -67,15 +67,13 @@ do_action( 'carbon_before_content' );
 		?>
 
     </main><!-- #main -->
-    </div><!-- .content-area -->
-
-<?php
-/**
- * Fires after the content, before the main content layout wrap closing markup.
- */
-do_action( 'carbon_after_content' );
-?>
-
+	    <?php
+	    /**
+	     * Fires after #main.
+	     */
+	    do_action( 'carbon_after_main' );
+	    ?>
+</div><!-- .content-area -->
 
 <?php
 get_footer();
