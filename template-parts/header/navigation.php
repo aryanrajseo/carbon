@@ -23,7 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
      aria-label="<?php esc_attr_e( 'Primary Menu', 'carbon' ); ?>">
 
 	<?php
-	//  under primary nav-primary before menu items
+	/**
+	 * Fires under after nav open.
+	 */
 	do_action( 'carbon_after_primary_nav_open' );
 	?>
 
@@ -43,7 +45,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	?>
 
 	<?php
-	//  under primary nav-primary after menu items
+	/**
+	 * Fires under before nav close.
+	 */
 	do_action( 'carbon_before_primary_nav_close' );
 	?>
 
