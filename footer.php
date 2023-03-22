@@ -19,8 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 </div><!-- #content -->
 <?php
-// fires after content-area
-do_action( 'carbon_after_content-area' );
+/**
+ * Fires after #content.
+ */
+do_action( 'carbon_after_content' );
 ?>
 
 <?php
@@ -45,7 +47,7 @@ if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_ac
  * Fires before the site-footer.
  */
 do_action( 'carbon_before_footer' );
-//
+// displays <footer>
 get_template_part( 'template-parts/footer', 'info' );
 /**
  * Fires after the site-footer.
@@ -54,5 +56,11 @@ do_action( 'carbon_after_footer' );
 ?>
 </div><!-- #site-container-->
 <?php wp_footer(); ?>
+<?php
+/**
+ * Fires after 'wp_footer'.
+ */
+do_action( 'carbon_after_wp_footer' );
+?>
 </body>
 </html>

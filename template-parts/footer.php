@@ -18,19 +18,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 		if ( has_nav_menu( 'secondary' ) ) :
 			?>
 			<?php
-			//replaced as hook
-			//do_action( 'carbon_secondary_navigation', 'carbon_do_secondary_navigation' );
+			// displays secondary-navigation
 			get_template_part( 'template-parts/footer/navigation-secondary', 'secondary' );
 			?>
 		<?php
 		endif;
 		?>
-    </div><!-- .wrap -->
-	<?php do_action( 'carbon_footer_copyright' ); ?>
+
+		<?php
+		/**
+		 * Fires under the site-footer.
+		 */
+		do_action( 'carbon_footer' );
+		?>
+
+    </div>
 	<?php
 	/**
-	 * Fires under the site-footer.
+	 * Fires copyright.
 	 */
-	do_action( 'carbon_footer' );
-	?>
+    do_action( 'carbon_footer_copyright' );
+    ?>
+
 </footer> <!-- #site-footer -->
