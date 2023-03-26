@@ -121,7 +121,7 @@ function carbon_setup() {
 	add_theme_support( 'responsive-embeds' );
 
     // Add support for WooCommerce Plugin.
-	add_theme_support( 'woocommerce' );
+    add_theme_support( 'woocommerce' );
 
 }
 
@@ -197,7 +197,6 @@ function carbon_block_editor_styles() {
 	// Add custom fonts.
 	//wp_enqueue_style( 'carbon-fonts', carbon_fonts_url(), array(), null );
 }
-
 add_action( 'enqueue_block_editor_assets', 'carbon_block_editor_styles' );
 
 
@@ -217,7 +216,5 @@ require get_parent_theme_file_path( '/inc/widgets.php' );
 // Sidebar or Widgets Functions
 require get_parent_theme_file_path( '/inc/woocommerce.php' );
 
-// Add support for excerpt in Page
-add_post_type_support( 'page', 'excerpt' );
 
 
