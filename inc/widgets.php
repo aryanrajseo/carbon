@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-add_action( 'widgets_init', 'themename_widgets_init' );
+add_action( 'widgets_init', 'carbon_sidebar_init' );
 
-function themename_widgets_init() {
+function carbon_sidebar_init() {
 
 	register_sidebar( array(
 		'name'          => __( 'Primary Sidebar', 'carbon' ),
@@ -40,6 +40,7 @@ function themename_widgets_init() {
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
+add_action( 'widgets_init', 'carbon_widgets_init' );
 function carbon_widgets_init() {
 	register_sidebar(
 		array(
@@ -77,5 +78,3 @@ function carbon_widgets_init() {
 		)
 	);
 }
-
-add_action( 'widgets_init', 'carbon_widgets_init' );
