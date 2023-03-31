@@ -26,6 +26,10 @@ do_action( 'carbon_after_content' );
 ?>
 
 <?php
+/**
+ *  Sidebar
+ *  0.0.1
+ */
 get_sidebar();
 ?>
 
