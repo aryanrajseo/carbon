@@ -18,9 +18,10 @@ It is recommended to use child theme to make changes and prevent overwriting fut
 
 == Changelog ==
 
+
 = 0.0.1 =
 * Security bug addressed
-* WooCommerce support
+* WooCommerce native template support
 
 == Upgrade Notice ==
 
