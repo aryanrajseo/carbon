@@ -217,7 +217,7 @@ require get_parent_theme_file_path( '/inc/general.php' );
 require get_parent_theme_file_path( '/inc/widgets.php' );
 // Sidebar or Widgets Functions
 require get_parent_theme_file_path( '/inc/woocommerce.php' );
-// theme options
+// Site Layout option
 require get_parent_theme_file_path( '/inc/layout.php' );
 
 
