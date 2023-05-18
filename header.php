@@ -24,12 +24,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	do_action( 'carbon_head' );
 	?>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<?php
+// Get the layout option for the current post or page
+$layout       = get_post_meta( get_the_ID(), 'layout_option', true );
+$layout_class = '';
+
+if ( $layout === 'content-sidebar' ) {
+	$layout_class = 'content-sidebar';
+} elseif ( $layout === 'sidebar-content' ) {
+	$layout_class = 'sidebar-content';
+} elseif ( $layout === 'sidebar-content-sidebar' ) {
+	$layout_class = 'sidebar-content-sidebar';
+} elseif ( $layout === 'no-sidebar' ) {
+	$layout_class = 'no-sidebar full-width-content ';
+} else {
+	$layout_class = 'full-width-content';
+}
+?>
+
+<body <?php body_class( $layout_class ); ?>>
 <?php wp_body_open(); ?>
 
 <?php
@@ -40,7 +58,7 @@ do_action( 'carbon_before' );
 ?>
 
 <div id="site-container" class="site-container">
-    <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'carbon' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'carbon' ); ?></a>
 	<?php
 	/**
 	 * Fires immediately after the site container opening markup, before `carbon_header` action hook.
@@ -56,15 +74,15 @@ do_action( 'carbon_before' );
 	 */
 	do_action( 'carbon_after_header' );
 	?>
-    <div id="site-inner" class="site-inner">
+	<div id="site-inner" class="site-inner">
 
 		<?php
 
 		// show only if it is not default post page and template-parts/article/entry-header is inactive. Woo single product is restricted.
-		if ( ! is_front_page() ||! is_home() ) {
-            if ( ! is_product() ) {
-	            // get_template_part( 'template-parts/page-header' );
-            }
+		if ( ! is_front_page() || ! is_home() ) {
+			//if ( class_exists( 'woocommerce' ) && ! is_product() ) {
+			// get_template_part( 'template-parts/page-header' );
+			//}
 		}
 
 		?>
@@ -74,14 +92,11 @@ do_action( 'carbon_before' );
 		 */
 		do_action( 'carbon_before_content_layout_wrap' );
 		?>
-        <div id="content-layout-wrap" class="content-layout-wrap">
+		<div id="content-layout-wrap" class="content-layout-wrap has-<?php echo esc_attr( $layout_class ); ?>">
 			<?php
 			/**
 			 * Fires before #content.
 			 */
 			do_action( 'carbon_before_content' );
 			?>
-            <div id="content" class="site-content">
-
-
-    
+			<div id="content" class="site-content">

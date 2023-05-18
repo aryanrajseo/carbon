@@ -120,8 +120,8 @@ function carbon_setup() {
 	// Add support for responsive embeds.
 	add_theme_support( 'responsive-embeds' );
 
-    // Add support for WooCommerce Plugin.
-    add_theme_support( 'woocommerce' );
+	// Add support for WooCommerce Plugin.
+	add_theme_support( 'woocommerce' );
 
 }
 
@@ -149,7 +149,7 @@ add_action( 'wp_head', 'carbon_javascript_detection', 0 );
  */
 function js_nojs_script() {
 	?>
-    <script>
+	<script>
         //<![CDATA[
         (function () {
             var c = document.body.classList;
@@ -157,7 +157,7 @@ function js_nojs_script() {
             c.add('js');
         })();
         //]]>
-    </script>
+	</script>
 	<?php
 }
 
@@ -193,10 +193,12 @@ add_action( 'wp_enqueue_scripts', 'carbon_scripts' );
  */
 function carbon_block_editor_styles() {
 	// Block styles.
-	wp_enqueue_style( 'carbon-block-editor-style', get_theme_file_uri( '/assets/css/editor-blocks.css' ), array(), '20190328' );
+	wp_enqueue_style( 'carbon-block-editor-style', get_theme_file_uri( '/assets/css/editor-blocks.css' ), array(),
+		'20190328' );
 	// Add custom fonts.
 	//wp_enqueue_style( 'carbon-fonts', carbon_fonts_url(), array(), null );
 }
+
 add_action( 'enqueue_block_editor_assets', 'carbon_block_editor_styles' );
 
 
@@ -215,6 +217,7 @@ require get_parent_theme_file_path( '/inc/general.php' );
 require get_parent_theme_file_path( '/inc/widgets.php' );
 // Sidebar or Widgets Functions
 require get_parent_theme_file_path( '/inc/woocommerce.php' );
-
+// theme options
+require get_parent_theme_file_path( '/inc/layout.php' );
 
 
