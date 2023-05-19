@@ -48,11 +48,12 @@ if (empty($layout) || $layout === 'default') {
 
 $layout_class = '';
 
-// Debugging information
 $default_layout = get_theme_mod('layout_option', 'full-width-content');
-echo 'Default Layout: ' . $default_layout . '<br>';
-echo 'Layout: ' . $layout . '<br>';
-echo 'Queried Object ID: ' . get_queried_object_id() . '<br>';
+
+//// Debugging information
+//echo 'Default Layout: ' . $default_layout . '<br>';
+//echo 'Layout: ' . $layout . '<br>';
+//echo 'Queried Object ID: ' . get_queried_object_id() . '<br>';
 
 // Set the default layout class
 $layout_class = 'else-content';
@@ -67,7 +68,13 @@ if ($layout === 'full-width-content') {
     $layout_class = 'has-primary-sidebar has-secondary-sidebar sidebar-content-sidebar';
 }
 
-echo 'Layout Class: ' . $layout_class . '<br>';
+//echo 'Layout Class: ' . $layout_class . '<br>';
+
+$custom_body_class = get_post_meta(get_the_ID(), '_custom_body_class', true); // Get the custom body class value
+
+if (!empty($custom_body_class)) {
+    $layout_class .= ' has-custom-body-class ' . $custom_body_class;
+}
 
 ?>
 
@@ -118,7 +125,7 @@ do_action('carbon_before');
          */
         do_action('carbon_before_content_layout_wrap');
         ?>
-        <div id="content-layout-wrap" class="content-layout-wrap has-<?php echo esc_attr($layout_class); ?>">
+        <div id="content-layout-wrap" class="content-layout-wrap">
             <?php
             /**
              * Fires before #content.

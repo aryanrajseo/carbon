@@ -9,8 +9,8 @@
  * @version    0.0.2
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
 }
 
 ?>
@@ -19,57 +19,63 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Fires before #article.
  */
-do_action( 'carbon_before_article' );
+do_action('carbon_before_article');
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+<?php
+$custom_class = get_post_meta(get_the_ID(), '_custom_post_class', true); // Get the custom post class value
+
+?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class($custom_class); ?>>
 
     <div class="inside-article">
 
-		<?php
-		// hide on single post/page to show template-parts/page-header.php
-		//if ( ! is_singular() ) :
-		get_template_part( 'template-parts/article/entry-header' );
-		//endif;
+        <?php
+        // hide on single post/page to show template-parts/page-header.php
+        //if ( ! is_singular() ) :
+        get_template_part('template-parts/article/entry-header');
+        //endif;
 
-		?>
+        ?>
 
-		<?php
-		if ( ! is_singular() ) :
-			get_template_part( 'template-parts/article/entry-image' );
-		endif;
-		?>
+        <?php
+        if (!is_singular()) :
+            get_template_part('template-parts/article/entry-image');
+        endif;
+        ?>
 
         <div class="entry-content">
-			<?php
+            <?php
 
-			// master conditional loop post content view.
-			// we will show full content for other post format excluding default "standard".
-			if ( ! has_post_format( '' ) && is_home() || is_archive() ) {
-				the_excerpt();
+            // master conditional loop post content view.
+            // we will show full content for other post format excluding default "standard".
+            if (!has_post_format('') && is_home() || is_archive()) {
+                the_excerpt();
 
-			} // should show full content for singular post types.
-            elseif ( is_singular() ) {
-				the_content();
-			} else {
-				the_content();
-			}
+            } // should show full content for singular post types.
+            elseif (is_singular()) {
+                the_content();
+            } else {
+                the_content();
+            }
 
-			// for single post, page type, page-break pagination.
-			if ( is_singular() ) :
-				get_template_part( 'template-parts/page-break', 'pagination' );
-			endif;
-			?>
+            // for single post, page type, page-break pagination.
+            if (is_singular()) :
+                get_template_part('template-parts/page-break', 'pagination');
+            endif;
+            ?>
         </div><!-- .entry-content -->
-		<?php
-		get_template_part( 'template-parts/article/entry-footer' );
-		?>
+        <?php
+        get_template_part('template-parts/article/entry-footer');
+        ?>
 
-		<?php
-		// Author bio.
-		if ( is_singular('post') && get_the_author_meta( 'description' ) ) :
-			get_template_part( 'template-parts/article/entry-author' );
-		endif;
-		?>
+        <?php
+        // Author bio.
+        if (is_singular('post') && get_the_author_meta('description')) :
+            get_template_part('template-parts/article/entry-author');
+        endif;
+        ?>
 
     </div><!-- .inside article -->
 </article><!-- article#post-<?php the_ID(); ?> -->
@@ -78,5 +84,5 @@ do_action( 'carbon_before_article' );
 /**
  * Fires after #article.
  */
-do_action( 'carbon_after_article' );
+do_action('carbon_after_article');
 ?>

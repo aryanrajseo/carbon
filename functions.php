@@ -224,5 +224,6 @@ require get_parent_theme_file_path('/inc/widgets.php');
 require get_parent_theme_file_path('/inc/woocommerce.php');
 // Site Layout option
 require get_parent_theme_file_path('/inc/layout.php');
-
+// Custom Classes option
+require get_parent_theme_file_path('/inc/custom-classes.php');
 

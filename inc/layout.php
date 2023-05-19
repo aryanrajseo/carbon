@@ -43,8 +43,8 @@ function render_layout_meta_box($post)
     wp_nonce_field('save_layout_option', 'layout_option_nonce');
 
     // Get the default layout option from the customizer
-    //    $default_layout = get_theme_mod('layout_option', 'full-width-content');
-    $default_layout = get_theme_mod('layout_option', 'default');
+    $default_layout = get_theme_mod('layout_option', 'full-width-content');
+
 
     // Define the layout options
     $options = array(
@@ -133,8 +133,7 @@ function add_layout_customizer_support($wp_customize)
 
     // Add setting for layout option
     $wp_customize->add_setting('layout_option', array(
-        //'default' => 'full-width-content',
-        'default' => 'default',
+        'default' => 'full-width-content',
         'sanitize_callback' => 'sanitize_text_field',
         'transport' => 'refresh', // Change transport to 'refresh'
     ));
@@ -161,8 +160,8 @@ add_action('customize_register', 'add_layout_customizer_support');
 function apply_global_layout_option()
 {
     // Get the default layout option from the customizer
-//    $default_layout = get_theme_mod('layout_option', 'full-width-content');
-    $default_layout = get_theme_mod('layout_option', 'default');
+    $default_layout = get_theme_mod('layout_option', 'full-width-content');
+
 
     // Update layout option for all posts of each post type
     $post_types = get_post_types(array('public' => true), 'names');
