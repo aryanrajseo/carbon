@@ -111,10 +111,10 @@ do_action('carbon_before');
 
         <?php
 
-        // show only if it is not default post page and template-parts/article/entry-header is inactive. Woo single product is restricted.
+        // show only if it is not default post page and template-parts/article/entry-header is inactive in content.php. Woo single product is restricted.
         if (!is_front_page() || !is_home()) {
             //if ( class_exists( 'woocommerce' ) && ! is_product() ) {
-            // get_template_part( 'template-parts/page-header' );
+            //get_template_part('template-parts/page-header');
             //}
         }
 
@@ -125,7 +125,7 @@ do_action('carbon_before');
          */
         do_action('carbon_before_content_layout_wrap');
         ?>
-        <div id="content-layout-wrap" class="content-layout-wrap">
+        <div id="content-layout-wrap" class="content-layout-wrap grid-container">
             <?php
             /**
              * Fires before #content.

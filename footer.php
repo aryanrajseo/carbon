@@ -31,18 +31,6 @@ do_action('carbon_after_content');
  *  0.0.1
  */
 
-//$layout = get_post_meta(get_the_ID(), 'layout_option', true);
-//$default_layout = get_theme_mod('layout_option', 'full-width-content');
-//
-//// Handle the 'default' layout option
-//if ($layout === 'default') {
-//    $layout = $default_layout;
-//}
-//
-//$layout_class = [];
-//if ($layout !== 'full-width-content') {
-//    get_sidebar();
-//}
 get_sidebar();
 ?>
 

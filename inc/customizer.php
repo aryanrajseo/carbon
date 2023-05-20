@@ -9,74 +9,65 @@
  * @version    0.0.2
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
 }
 
-// https://developer.wordpress.org/themes/customize-api/
-// https://codex.wordpress.org/Theme_Customization_API
-// https://developer.wordpress.org/reference/hooks/customize_register/
+global $site_link, $site_name; // Declare global variables
 
-add_action( 'customize_register', 'register_theme_customizer' );
-/*
- * Register Our Customizer Stuff Here
- */
-function register_theme_customizer( $wp_customize ) {
+$site_link = home_url();
+$site_name = get_bloginfo('name');
 
-	$year      = date( 'Y' );
-	$copyright = '';
+// Register the customizer
+add_action('customize_register', 'register_site_credits_customizer');
 
-	$sitename = get_bloginfo( 'name' );
-	$sitelink = home_url();
+function register_site_credits_customizer($wp_customize)
+{
+    $year = date('Y');
+    global $site_link, $site_name; // Access the global variables
 
-	$default_credits = 'Copyright &#x000A9;&nbsp;' . $year . ' &#x000B7; <a href="' . $sitelink . '">' . $sitename . '</a>';
+    $default_credits = 'Copyright &#x000A9;&nbsp;' . $year . ' &#x000B7; <a href="' . $site_link . '">' . $site_name . '</a>';
 
+    // Site Copyright.
+    $wp_customize->add_section(
+        'site-copyright',
+        array(
+            'description' => sprintf('<strong>%s</strong>', __('Modify the Site Credits.', 'carbon')),
+            'title' => __('Site Copyright', 'carbon'),
+            'panel' => '',
+        )
+    );
 
-	// Site Copyright.
-	$wp_customize->add_section(
-		'site-copyright',
-		[
-			'description' => sprintf( '<strong>%s</strong>', __( 'Modify the Site Credits.', 'carbon' ) ),
-			'title'       => __( 'Site Copyright', 'carbon' ),
-			'panel'       => '',
-		]
-	);
+    // Add Setting for Site Copyright.
+    $wp_customize->add_setting(
+        'site_credits',
+        array(
+            'default' => $default_credits,
+            'sanitize_callback' => 'wp_kses_post',
+            'transport' => isset($wp_customize->selective_refresh) ? 'postMessage' : 'refresh',
+        )
+    );
 
-	// Add Setting for SIte Copyright
-	$wp_customize->add_setting(
-		'copyright-text',
-		[
-			'default'           => '',
-			'sanitize_callback' => 'wp_kses_post',
-			'transport'         => isset( $wp_customize->selective_refresh ) ? 'postMessage' : 'refresh',
-		]
-	);
+    $wp_customize->add_control(
+        'site_credits',
+        array(
+            'label' => __('Copyright Section', 'carbon'),
+            'section' => 'site-copyright',
+            'type' => 'textarea',
+        )
+    );
 
-	$wp_customize->add_control(
-		'copyright-text',
-		[
-			'form'     => __( 'Change the Copyright Content.', 'carbon' ),
-			'label'    => __( 'Copyright Section', 'carbon' ),
-			'section'  => 'site-copyright',
-			'settings' => 'copyright-text',
-			'type'     => 'textarea',
-		]
-	);
-
-	if ( isset( $wp_customize->selective_refresh ) ) {
-		$wp_customize->selective_refresh->add_partial(
-			'copyright-text',
-			[
-				'selector'        => '.site-credits',
-				'settings'        => [ 'copyright-text' ],
-				'render_callback' => function () {
-					//return get_theme_mod( 'essence-form-text' );
-					//return apply_filters('essence-form-text_output',  'the_content');
-					return is_null( apply_filters( 'copyright-text_output', null, '', '' ) );
-				},
-			]
-		);
-	}
-
+    if (isset($wp_customize->selective_refresh)) {
+        $wp_customize->selective_refresh->add_partial(
+            'site_credits',
+            array(
+                'selector' => '.site-credits',
+                'settings' => array('site_credits'),
+                'render_callback' => function () use ($default_credits) { // Use the $default_credits variable
+                    return get_theme_mod('site_credits', $default_credits);
+                },
+            )
+        );
+    }
 }
-    
+
