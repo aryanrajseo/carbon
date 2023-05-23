@@ -206,7 +206,7 @@ function carbon_block_editor_styles()
 
 add_action('enqueue_block_editor_assets', 'carbon_block_editor_styles');
 
-
+// https://make.wordpress.org/core/2016/09/09/new-functions-hooks-and-behaviour-for-theme-developers-in-wordpress-4-7/
 /**
  * Custom template tags for this theme.
  */
