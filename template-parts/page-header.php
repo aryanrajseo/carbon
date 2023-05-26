@@ -23,10 +23,13 @@ if (!defined('ABSPATH')) {
         $title = get_the_title($post->ID);
         $page_id = get_the_ID();
         $archive_title = get_the_archive_title();
+        $show_on_front = get_option('show_on_front');
 
-        if (is_home() && !is_front_page()) {
+        if (is_home() && is_front_page()) {
+            echo '<h2 class="page-title">Latest Posts</h2>'; // his page is set as the default posts page.
+        } elseif (is_home() && !is_front_page()) { //  for custom post page in settings > reading.
             echo '<h1 class="page-title">' . $title . '</h1>';
-        } elseif (is_front_page() && !is_home()) {
+        } elseif (is_front_page() && !is_home()) { // for custom homepage/frontpage in settings > reading.
             echo '<h2 class="page-title">' . $title . '</h2>';
         } elseif (is_singular()) {
             echo '<h1 class="page-title">' . $title . '</h1>';

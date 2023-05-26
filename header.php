@@ -112,11 +112,11 @@ do_action('carbon_before');
         <?php
 
         // show only if it is not default post page and template-parts/article/entry-header is inactive in content.php. Woo single product is restricted.
-        if (!is_front_page() || !is_home()) {
-            //if ( class_exists( 'woocommerce' ) && ! is_product() ) {
-            //get_template_part('template-parts/page-header');
-            //}
-        }
+        // if (!is_front_page() || !is_home()) {
+        //if (class_exists('woocommerce') && !is_product()) {
+        get_template_part('template-parts/page-header');
+        // }
+        // }
 
         ?>
         <?php
