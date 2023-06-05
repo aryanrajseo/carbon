@@ -22,6 +22,7 @@ It is recommended to use child theme to make changes and prevent overwriting fut
 = 0.0.1 =
 * Security bug addressed
 * WooCommerce native template support
+* Page Header template update
 
 == Upgrade Notice ==
 
