@@ -14,7 +14,7 @@ Use Carbon theme framework with our starter "Carbon Copy" or "Carbon Child" chil
 == Frequently Asked Questions ==
 
 Can I make changes to the carbon theme?
-It is recommended to use child theme to make changes and prevent overwriting future updates.
+It is recommended to use child theme to make changes and prevent overwriting future updates. You can always change the theme name to custom one work from there.
 
 == Changelog ==
 
