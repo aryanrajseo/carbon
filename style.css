@@ -1249,12 +1249,6 @@ img.alignright,
     opacity: 1;
 }
 
-.carbon-responsive-menu {
-    display: none;
-    padding-bottom: 15px;
-    position: relative;
-}
-
 .menu-toggle,
 .sub-menu-toggle {
     background-color: transparent;
@@ -1587,7 +1581,7 @@ p.entry-meta {
 /* Media Queries
 ---------------------------------------------------------------------------------------------------- */
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1024px) {
 
     /* Site Header
     --------------------------------------------- */
@@ -1812,6 +1806,38 @@ p.entry-meta {
 
 }
 
+@media (max-width: 1023px) {
+
+    .carbon-responsive-menu {
+        display: block; /* none for popup */
+        padding-bottom: 15px;
+        position: relative;
+    }
+
+    .carbon-responsive-menu.open {
+        display: block;
+    }
+
+    .menu-container {
+        position: relative;
+    }
+
+    .nav-primary {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Start off-screen to the right */
+        z-index: 9999;
+        width: 100vw;
+        height: 100vh;
+        padding: 0 30px;
+        background-color: #ffffff;
+        transition: right 0.3s ease-in-out; /* Apply a transition to the right property */
+    }
+
+    .nav-primary.open {
+        right: 0; /* Slide in from the right */
+    }
+}
 
 /* Print Styles
 ---------------------------------------------------------------------------------------------------- */

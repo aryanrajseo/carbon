@@ -227,3 +227,9 @@ require get_parent_theme_file_path('/inc/layout.php');
 // Custom Classes option
 require get_parent_theme_file_path('/inc/custom-classes.php');
 
+add_action('wp_enqueue_scripts', 'loads_menu_styles_scripts');
+function loads_menu_styles_scripts()
+{
+    wp_enqueue_script('carbon-menu', get_stylesheet_directory_uri() . '/assets/js/custom-menu.js', array(), '1.0.0', true);
+    
+}
